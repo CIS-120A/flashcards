@@ -3,14 +3,17 @@ import axios from "axios";
 export const SORT_CHAPTERS = "SORT_CHAPTERS";
 
 export function sortChapters() {
+    console.log('axios')
     return dispatch => {
+
+        let chapterOne = [];
+        let chapterTwo = [];
+        let chapterThree = [];
+        let chapterFour = [];
+        let chapterFive = [];
+
         axios.get('http://localhost:5000/chapter')
             .then(res => {
-                let chapterOne = [];
-                let chapterTwo = [];
-                let chapterThree = [];
-                let chapterFour = [];
-                let chapterFive = [];
 
                 res.data.map(arr => {
                     if (arr.chapter ===1) {
@@ -29,9 +32,12 @@ export function sortChapters() {
                         chapterFive.push(arr)
                     }
                 })
-                console.log(chapterOne)
                 dispatch({ type: SORT_CHAPTERS, payload: {
-                    data: res.data
+                    chapterOne,
+                    chapterTwo,
+                    chapterThree,
+                    chapterFour,
+                    chapterFive
                     }})
             })
             .catch(err => {
