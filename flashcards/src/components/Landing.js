@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { sortChapters } from "../Redux/Actions";
+import {get_chapter, sortChapters} from "../Redux/Actions";
 import { Link } from 'react-router-dom';
 import FlashCards from '../components/FlashCards'
 
-const Landing = ({ sortChapters, data, history }) => {
+const Landing = ({ sortChapters, data, history, get_chapter }) => {
     useEffect(() => {
         sortChapters();
     },[sortChapters]);
@@ -14,6 +14,8 @@ const Landing = ({ sortChapters, data, history }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         chapter = e.target.value
+        console.log(chapter)
+        get_chapter(chapter)
         history.push(`/flashcards/${chapter}`)
     }
 
@@ -43,7 +45,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    sortChapters
+    sortChapters,
+    get_chapter
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Landing)

@@ -1,4 +1,4 @@
-import { SORT_CHAPTERS } from "./Actions";
+import { SORT_CHAPTERS, GET_CHAPTER, SET_SCORE } from "./Actions";
 import {act} from "@testing-library/react";
 
 const initialState = {
@@ -7,7 +7,9 @@ const initialState = {
     two: null,
     three: null,
     four: null,
-    five: null
+    five: null,
+    card_list: [],
+    score: 0
 };
 
 export default function mainReducer( state = initialState, action) {
@@ -21,5 +23,18 @@ export default function mainReducer( state = initialState, action) {
                 four: action.payload.chapterFour,
                 five: action.payload.chapterFive
             }
+        case GET_CHAPTER:
+            return {
+                ...state,
+                card_list: action.payload.data
+            }
+        case SET_SCORE:
+            return {
+                ...state,
+                score: action.payload.num
+            }
+        default: {
+            return state
+        }
     }
 }

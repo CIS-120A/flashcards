@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Landing from '../components/Landing';
 import FlashCards from "../components/FlashCards";
+import Score from '../components/Score'
 
 
 export default function AppRouting() {
@@ -9,6 +10,7 @@ export default function AppRouting() {
         <div>
             <Route exact path='/welcome' component={Landing} />
             <Route exact path='/flashcards/:id' component={FlashCards} />
+            <Route exact path='/score/:id' component={Score} />
         </div>
     )
 }

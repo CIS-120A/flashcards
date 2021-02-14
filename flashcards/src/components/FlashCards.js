@@ -1,69 +1,77 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
+import {set_score} from "../Redux/Actions";
 
-const FlashCard_Study = ({ match, one, two, three, four, five }) => {
+const FlashCard_Study = ({data, history, match, set_score }) => {
 
     let id = match.params.id
     const [start, setStart] = useState(true)
     const [flipped, setFlipped] = useState(false);
-    const [flashCards, setFlashCards] = useState(null);
-    const [card, setCard] = useState({
-        term: null,
-        definition: null,
-        choiceA: "",
-        choiceB: "",
-        choiceC: "",
-    });
+    const [flashCards, setFlashCards] = useState(data);
     const [term, setTerm] = useState(0);
-    let choices = [card.definition, card.choiceC, card.choiceB, card.choiceA];
-    choices.sort()
-
-    useEffect(() => {
-        if (Number(id) === 1) {
-            setFlashCards(one)
-        }
-        if (id === 2) {
-            setFlashCards(two)
-        }
-        if (id === 3) {
-            setFlashCards(three)
-        }
-        if (id === 4) {
-            setFlashCards(four)
-        }
-        if (id === 5) {
-            setFlashCards(five)
-        }
-    }, [id])
+    const [counter, setCounter] = useState(0);
+    const [score, setScore] = useState(0)
+    const [card, setCard] = useState({
+        term: "",
+        definition: "",
+        list: []
+    })
 
 
-    const getRandom = () => {
-        let random = Math.floor(Math.random() * Math.floor(flashCards.length));
+    const start_game = () => {
+        if (counter + 1 === data.length) {
+            set_score(score)
+            history.push(`/score/${id}`)
+        }
+
+        if (term + 3 >= data.length) {
+            setTerm(0)
+        }
+
         setCard({
-            term: flashCards[random].term,
-            definition: flashCards[random].definition,
-            choiceA: flashCards[Math.floor(Math.random() * Math.floor(flashCards.length))].definition,
-            choiceB: flashCards[Math.floor(Math.random() * Math.floor(flashCards.length))].definition,
-            choiceC: flashCards[Math.floor(Math.random() * Math.floor(flashCards.length))].definition,
+            term: data[counter].term,
+            definition: data[counter].definition,
+            list: [data[counter].definition,
+                data[Math.floor(Math.random() * Math.floor(data.length))].definition,
+                data[Math.floor(Math.random() * Math.floor(data.length))].definition,
+                data[Math.floor(Math.random() * Math.floor(data.length))].definition
+            ]
         })
-        setTerm(random)
+        setTerm(term + 1);
+        setCounter(counter + 1);
     };
 
     const clickHandler = (e) => {
         e.preventDefault()
-        getRandom()
+        start_game()
         setStart(!start)
     };
 
-    const choiceClicker = (e) => {
-        e.preventDefault();
-        console.log(e)
+    const user_select = (e) => {
+
+        if (e.target.textContent === card.definition) {
+            e.target.className = 'right'
+            setScore(score + 1);
+        }
+
+        if (e.target.textContent !== card.definition) {
+            e.target.className = 'wrong';
+        }
+        setTimeout(() => {
+            e.target.className = "";
+            start_game()
+        },10)
+
     }
 
     const handleFlip = () => {
         setFlipped(!flipped)
     }
-    console.log(card)
+
+    const submit_handler = (e) => {
+        console.log(e.target.value)
+    }
+
     if (!flashCards) {
         return <h1>Loading...</h1>
     } else if (start) {
@@ -73,15 +81,25 @@ const FlashCard_Study = ({ match, one, two, three, four, five }) => {
             </div>
         )
     } else {
-
+        card.list.sort()
         return (
             <div>
-                <h1>{flipped ? flashCards[term].definition : flashCards[term].term}</h1>
-                {choices.map(arr => {
-                    return <div className={() => arr === flashCards[term].definition ? 'wrong':'right'}>{arr}</div>
-                })}
-                <button onClick={handleFlip}>Flip Card</button>
-                <button onClick={getRandom}>Change</button>
+                {/*<h1>{flipped ? flashCards[term].definition : flashCards[term].term}</h1>*/}
+                <h1>{card.term}</h1>
+                    {card.list.map((arr, index) => {
+
+                        return (
+                            <div
+                               id={index}
+                               value={arr}
+                               onClick={user_select}>
+                                <p>{arr}</p>
+                            </div>
+                        )
+                    })}
+                <p>{score}</p>
+                    <button onClick={submit_handler}>Submit</button>
+                {/*<button onClick={handleFlip}>Flip Card</button>*/}
             </div>
         )
     }
@@ -93,12 +111,13 @@ function mapStateToProps(state) {
         two: state.two,
         three: state.three,
         four: state.four,
-        five: state.five
+        five: state.five,
+        data: state.card_list
     }
 }
 
 const mapDispatchToProps = {
-
+    set_score
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlashCard_Study);
