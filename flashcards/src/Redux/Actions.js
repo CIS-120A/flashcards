@@ -1,8 +1,10 @@
 import axios from "axios";
 
 export const SORT_CHAPTERS = "SORT_CHAPTERS";
+export const GET_CHAPTER = "GET_CHAPTER";
+export const SET_SCORE = "SET_SCORE"
 
-export function sortChapters() {
+function sortChapters() {
     console.log('axios')
     return dispatch => {
 
@@ -44,4 +46,42 @@ export function sortChapters() {
                 console.log(err)
             })
     }
+}
+
+function get_chapter(id) {
+    return dispatch => {
+
+        axios.get(`http://localhost:5000/chapter/${id}`)
+            .then(res => {
+                console.log(res)
+                dispatch({
+                    type: GET_CHAPTER, payload: {
+                        data: res.data
+                    }
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+function set_score(num) {
+
+    return dispatch => {
+
+        // insert axios call to save score and return list of high scores
+
+        dispatch({
+            type: SET_SCORE, payload: {
+                num
+            }
+        })
+    }
+}
+
+export {
+    sortChapters,
+    get_chapter,
+    set_score
 }
