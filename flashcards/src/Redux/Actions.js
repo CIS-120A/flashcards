@@ -2,44 +2,19 @@ import axios from "axios";
 
 export const SORT_CHAPTERS = "SORT_CHAPTERS";
 export const GET_CHAPTER = "GET_CHAPTER";
-export const SET_SCORE = "SET_SCORE"
+export const SET_SCORE = "SET_SCORE";
+export const POST_SCORE = "POST_SCORE";
+export const GET_SCORE = "GET_SCORE";
 
 function sortChapters() {
     console.log('axios')
     return dispatch => {
 
-        let chapterOne = [];
-        let chapterTwo = [];
-        let chapterThree = [];
-        let chapterFour = [];
-        let chapterFive = [];
-
         axios.get('http://localhost:5000/chapter')
             .then(res => {
-
-                res.data.map(arr => {
-                    if (arr.chapter ===1) {
-                        chapterOne.push(arr)
-                    }
-                    if (arr.chapter === 2) {
-                        chapterTwo.push(arr)
-                    }
-                    if (arr.chapterThree === 3) {
-                        chapterThree.push(arr)
-                    }
-                    if (arr.chapterFour === 4) {
-                        chapterFour.push(arr)
-                    }
-                    if (arr.chapterFive === 5) {
-                        chapterFive.push(arr)
-                    }
-                })
+                console.log(res.data)
                 dispatch({ type: SORT_CHAPTERS, payload: {
-                    chapterOne,
-                    chapterTwo,
-                    chapterThree,
-                    chapterFour,
-                    chapterFive
+                    data: res.data
                     }})
             })
             .catch(err => {
@@ -69,19 +44,57 @@ function get_chapter(id) {
 function set_score(num) {
 
     return dispatch => {
-
-        // insert axios call to save score and return list of high scores
-
         dispatch({
             type: SET_SCORE, payload: {
-                num
+                data: num
             }
         })
     }
 }
 
+function post_score(num) {
+    console.log(num)
+        return dispatch => {
+            axios.post('http://localhost:5000/score', num)
+                .then(res => {
+                    dispatch({ type: POST_SCORE })
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+}
+
+export function thunk_scores(id) {
+    console.log(`this is line 100 ${id}`)
+    return dispatch => {
+        dispatch(get_score(id))
+    }
+}
+
+function get_score(id) {
+
+    return (dispatch) => {
+
+       axios.get(`http://localhost:5000/score/${id}`)
+            .then(res => {
+                console.log(res.data)
+                dispatch({
+                    type: GET_SCORE, payload: {
+                        scores: res.data
+                    }
+                })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+}
+
 export {
     sortChapters,
     get_chapter,
-    set_score
+    set_score,
+    post_score,
+    get_score
 }
