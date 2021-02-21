@@ -19,9 +19,9 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
 
 
     const start_game = () => {
-        if (counter + 1 === data.length) {
+        if (counter  === data.length) {
             set_score(score)
-            history.push(`/score/${id}`)
+            return history.push(`/score/${id}`)
         }
 
         if (term + 3 >= data.length) {
@@ -52,32 +52,27 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
         if (e.target.textContent === card.definition) {
             e.target.className = 'right'
             setScore(score + 1);
-        }
-
-        if (e.target.textContent !== card.definition) {
+        } else if (e.target.textContent !== card.definition) {
             e.target.className = 'wrong';
         }
+        console.log(score)
         setTimeout(() => {
             e.target.className = "";
             start_game()
-        },10)
+        },1000)
 
-    }
-
-    const handleFlip = () => {
-        setFlipped(!flipped)
-    }
-
-    const submit_handler = (e) => {
-        console.log(e.target.value)
     }
 
     if (!flashCards) {
         return <h1>Loading...</h1>
     } else if (start) {
         return (
-            <div>
-                <button onClick={clickHandler}>Start</button>
+            <div className='start_container'>
+                <p>stuff and things</p>
+                <p>stuff and things</p>
+                <p>stuff and things</p>
+                <p>stuff and things</p>
+                <button className='start_btn' onClick={clickHandler}>Start</button>
             </div>
         )
     } else {
@@ -91,15 +86,14 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
                         return (
                             <div
                                id={index}
-                               value={arr}
+                               className='options_select'
                                onClick={user_select}>
-                                <p>{arr}</p>
+                               <p>{arr}</p>
                             </div>
                         )
                     })}
-                <p>{score}</p>
-                    <button onClick={submit_handler}>Submit</button>
-                {/*<button onClick={handleFlip}>Flip Card</button>*/}
+                <p className='score'>current score</p>
+                <p className='score'>{score}</p>
             </div>
         )
     }
@@ -107,11 +101,6 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
 
 function mapStateToProps(state) {
     return {
-        one: state.one,
-        two: state.two,
-        three: state.three,
-        four: state.four,
-        five: state.five,
         data: state.card_list
     }
 }

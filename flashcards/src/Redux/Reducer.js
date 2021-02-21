@@ -1,15 +1,11 @@
-import { SORT_CHAPTERS, GET_CHAPTER, SET_SCORE } from "./Actions";
+import { SORT_CHAPTERS, GET_CHAPTER, SET_SCORE, POST_SCORE, GET_SCORE } from "./Actions";
 import {act} from "@testing-library/react";
 
 const initialState = {
-    card: [],
-    one: null,
-    two: null,
-    three: null,
-    four: null,
-    five: null,
+    terms: null,
     card_list: [],
-    score: 0
+    score: 0,
+    chapter_score: null
 };
 
 export default function mainReducer( state = initialState, action) {
@@ -17,11 +13,7 @@ export default function mainReducer( state = initialState, action) {
         case SORT_CHAPTERS:
             return {
                 ...state,
-                one: action.payload.chapterOne,
-                two: action.payload.chapterTwo,
-                three: action.payload.chapterThree,
-                four: action.payload.chapterFour,
-                five: action.payload.chapterFive
+                terms: action.payload.data
             }
         case GET_CHAPTER:
             return {
@@ -31,7 +23,16 @@ export default function mainReducer( state = initialState, action) {
         case SET_SCORE:
             return {
                 ...state,
-                score: action.payload.num
+                score: action.payload.data
+            }
+        case POST_SCORE:
+            return {
+                ...state,
+            }
+        case GET_SCORE:
+            return {
+                ...state,
+                chapter_score: action.payload.scores
             }
         default: {
             return state

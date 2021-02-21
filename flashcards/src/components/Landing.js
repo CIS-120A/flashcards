@@ -20,11 +20,11 @@ const Landing = ({ sortChapters, data, history, get_chapter }) => {
     }
 
     return (
-        <div>
+        <div className='landing_container'>
             <h1>CIS100-A FlashCard Game</h1>
-            <label htmlFor="flashcard">Choose a Chapter:</label>
+            <label className='select_label' htmlFor="flashcard">Choose a Chapter:</label>
 
-            <select onChange={submitHandler} name="flashcard" id="chapter-select">
+            <select className='select' onChange={submitHandler} name="flashcard" id="chapter-select">
                 <option value="">--Please choose an option--</option>
                 <option value={1}>Chapter One</option>
                 <option value={2}>Chapter Two</option>
@@ -33,7 +33,8 @@ const Landing = ({ sortChapters, data, history, get_chapter }) => {
                 <option value={5}>Chapter Five</option>
             </select>
 
-            <Link to='/flashcards'>Study All Chapters</Link>
+            <Link className='landing_btn' to='/flashcards'>Study All Chapters</Link>
+            <Link className='landing_btn' to='/learning'>All Terms</Link>
         </div>
     )
 }
