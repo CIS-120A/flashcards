@@ -25,13 +25,28 @@ function sortChapters() {
 
 function get_chapter(id) {
     return dispatch => {
+        let chapter_cards = [];
 
         axios.get(`http://localhost:5000/chapter/${id}`)
             .then(res => {
-                console.log(res)
+                res.data.map(arr => {
+                    chapter_cards.push({
+                        term: arr.term,
+                        definition: arr.definition,
+                        list: [
+                            arr.definition,
+                            res.data[Math.floor(Math.random() * Math.floor(res.data.length))].definition,
+                            res.data[Math.floor(Math.random() * Math.floor(res.data.length))].definition,
+                            res.data[Math.floor(Math.random() * Math.floor(res.data.length))].definition,
+                        ]
+                    })
+                })
+                chapter_cards.forEach(arr => {
+                    arr.list.sort()
+                })
                 dispatch({
                     type: GET_CHAPTER, payload: {
-                        data: res.data
+                        data: chapter_cards
                     }
                 })
             })
@@ -43,6 +58,7 @@ function get_chapter(id) {
 
 function set_score(num) {
 
+    console.log(num)
     return dispatch => {
         dispatch({
             type: SET_SCORE, payload: {
@@ -57,7 +73,9 @@ function post_score(num) {
         return dispatch => {
             axios.post('http://localhost:5000/score', num)
                 .then(res => {
-                    dispatch({ type: POST_SCORE })
+                    dispatch({ type: POST_SCORE, payload: {
+                        data: num
+                        } })
                 })
                 .catch(err => {
                     console.log(err)

@@ -19,26 +19,23 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
 
 
     const start_game = () => {
-        if (counter  === data.length) {
-            set_score(score)
-            return history.push(`/score/${id}`)
-        }
 
-        if (term + 3 >= data.length) {
-            setTerm(0)
-        }
+            if (term + 3 >= data.length) {
+                setTerm(0)
+            }
 
-        setCard({
-            term: data[counter].term,
-            definition: data[counter].definition,
-            list: [data[counter].definition,
-                data[Math.floor(Math.random() * Math.floor(data.length))].definition,
-                data[Math.floor(Math.random() * Math.floor(data.length))].definition,
-                data[Math.floor(Math.random() * Math.floor(data.length))].definition
-            ]
-        })
-        setTerm(term + 1);
-        setCounter(counter + 1);
+            setCard({
+                term: data[counter].term,
+                definition: data[counter].definition,
+                list: [
+                    data[counter].definition,
+                    data[Math.floor(Math.random() * Math.floor(data.length))].definition,
+                    data[Math.floor(Math.random() * Math.floor(data.length))].definition,
+                    data[Math.floor(Math.random() * Math.floor(data.length))].definition
+                ]
+            })
+            setTerm(term + 1);
+            setCounter(counter + 1);
     };
 
     const clickHandler = (e) => {
@@ -52,14 +49,22 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
         if (e.target.textContent === card.definition) {
             e.target.className = 'right'
             setScore(score + 1);
+            if (counter  === data.length) {
+                set_score(score)
+                return history.push(`/score/${id}`)
+            }
         } else if (e.target.textContent !== card.definition) {
             e.target.className = 'wrong';
+            if (counter  === data.length) {
+                set_score(score)
+                return history.push(`/score/${id}`)
+            }
         }
         console.log(score)
         setTimeout(() => {
             e.target.className = "";
             start_game()
-        },1000)
+        },10)
 
     }
 

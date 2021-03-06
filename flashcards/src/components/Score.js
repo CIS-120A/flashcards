@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import {get_chapter, get_score, post_score, sortChapters, thunk_scores} from "../Redux/Actions";
 import {connect} from "react-redux";
 
-function Scores({score, match, post_score, history, get_score}) {
+function Scores({current_score, match, post_score, history, get_score}) {
     let chapter = match.params.id;
     const [user, setUser] = useState({
         name: "",
         chapter: Number(chapter),
-        score: score
+        score: history.location.state.current_score
     })
 
     const changeHandler = (e) => {
@@ -21,14 +21,24 @@ function Scores({score, match, post_score, history, get_score}) {
     function submitHandler(e) {
             e.preventDefault();
             post_score(user);
-            get_score(chapter);
-            history.push(`/high_score/${chapter}`);
+            get_score(chapter)
+            setTimeout(() => {
+                history.push({
+                    pathname: `/high_score/${chapter}`,
+                    state: { data: user}
+                });
+            },2000);
     }
 
+    if (!user.score) {
+        return (
+            <h1>Loading</h1>
+        )
+    } else
     return (
         <div>
             <p>Your final score is....</p>
-            <h1>{score}</h1>
+            <h1>{user.score}</h1>
             <input type='text' name='name' placeholder='Enter Name' value={user.name} onChange={changeHandler} />
             <button onClick={submitHandler}>Submit Score</button>
         </div>
