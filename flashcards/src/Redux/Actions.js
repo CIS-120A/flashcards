@@ -74,7 +74,8 @@ function post_score(num) {
             axios.post('http://localhost:5000/score', num)
                 .then(res => {
                     dispatch({ type: POST_SCORE, payload: {
-                        data: num
+                        data: num,
+                        scores: res.data
                         } })
                 })
                 .catch(err => {
