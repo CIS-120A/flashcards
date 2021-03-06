@@ -4,7 +4,7 @@ import {act} from "@testing-library/react";
 const initialState = {
     terms: null,
     card_list: [],
-    score: 0,
+    score: null,
     chapter_score: null
 };
 
@@ -28,6 +28,7 @@ export default function mainReducer( state = initialState, action) {
         case POST_SCORE:
             return {
                 ...state,
+                score: action.payload.data
             }
         case GET_SCORE:
             return {

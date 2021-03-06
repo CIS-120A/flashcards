@@ -16,7 +16,9 @@ const Landing = ({ sortChapters, data, history, get_chapter }) => {
         chapter = e.target.value
         console.log(chapter)
         get_chapter(chapter)
-        history.push(`/flashcards/${chapter}`)
+        setTimeout(() => {
+            history.push(`/game/${chapter}`)
+        },200)
     }
 
     return (
