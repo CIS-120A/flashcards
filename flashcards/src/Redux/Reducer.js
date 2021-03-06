@@ -5,7 +5,7 @@ const initialState = {
     terms: null,
     card_list: [],
     score: null,
-    chapter_score: null
+    chap_high_score: null
 };
 
 export default function mainReducer( state = initialState, action) {
@@ -28,7 +28,8 @@ export default function mainReducer( state = initialState, action) {
         case POST_SCORE:
             return {
                 ...state,
-                score: action.payload.data
+                score: action.payload.data,
+                chap_high_score: action.payload.scores
             }
         case GET_SCORE:
             return {
