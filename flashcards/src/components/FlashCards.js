@@ -1,21 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {set_score} from "../Redux/Actions";
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
-const FlashCard_Study = ({data, history, match, set_score }) => {
+const FlashCard_Study = ({ data, history, match }) => {
 
-    let id = match.params.id
-    const [start, setStart] = useState(true)
+//TODO see if nav needs history or match
+
     const [flipped, setFlipped] = useState(false);
     const [flashCards, setFlashCards] = useState(data);
-    const [term, setTerm] = useState(0);
     const [counter, setCounter] = useState(0);
-    const [score, setScore] = useState(0)
-    const [card, setCard] = useState({
-        term: "",
-        definition: "",
-        list: []
-    })
 
     const clickHandler = (e) => {
         e.preventDefault();
@@ -55,7 +47,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    set_score
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlashCard_Study);

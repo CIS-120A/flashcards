@@ -14,8 +14,6 @@ const Landing = ({ sortChapters, history, get_chapter }) => {
         sortChapters();
     },[sortChapters]);
 
-    let chapter = null
-
     const click_chapter = (e) => {
         setData({
             ...data,

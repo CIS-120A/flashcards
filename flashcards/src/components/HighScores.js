@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {get_score} from "../Redux/Actions";
-import {connect} from "react-redux";
+import React, { useState } from 'react';
+import { connect } from "react-redux";
 
 function HighScores ({ data, match }) {
 
@@ -29,7 +28,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    get_score
+
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(HighScores)

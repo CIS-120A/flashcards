@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {post_score, set_score} from "../Redux/Actions";
+import { post_score, set_score } from "../Redux/Actions";
 import { connect } from "react-redux";
 
 function Game({ data, history, match }) {

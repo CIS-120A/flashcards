@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import {get_chapter, get_score, post_score, sortChapters, thunk_scores} from "../Redux/Actions";
-import {connect} from "react-redux";
+import { get_score, post_score } from "../Redux/Actions";
+import { connect } from "react-redux";
 
-function Scores({current_score, match, post_score, history, get_score}) {
+function Scores({ match, post_score, history, get_score }) {
+
     let chapter = match.params.id;
     const [user, setUser] = useState({
         name: "",
@@ -53,8 +54,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
     post_score,
-    get_score,
-    thunk_scores
+    get_score
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Scores)

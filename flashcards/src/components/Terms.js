@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import {set_score} from "../Redux/Actions";
-import {connect} from "react-redux";
+import React, { useState  } from 'react';
+import { connect } from "react-redux";
 
 function Terms ({ data }) {
 
     const [filter, setFilter] = useState(false);
     const [input, setInput] = useState("");
     const [terms, setTerms] = useState(data);
-
-    const click_handler = (e) => {
-        e.preventDefault();
-
-    }
 
     const filter_list = (e) => {
         e.preventDefault();
@@ -29,7 +23,6 @@ function Terms ({ data }) {
 
     let filtered_terms = filter_terms(terms, input)
 
-    console.log(input)
     if (!data) {
         return <h1>Loading....</h1>
     } else
@@ -69,7 +62,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    set_score
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Terms);
