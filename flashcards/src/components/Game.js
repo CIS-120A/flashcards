@@ -62,3 +62,21 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
+
+
+//TODO below is the code for color change on select from user
+
+// if (e.target.textContent === card.definition) {
+//     e.target.className = 'right'
+//     setScore(score + 1);
+//     if (counter  === data.length) {
+//         set_score(score)
+//         return history.push(`/score/${id}`)
+//     }
+// } else if (e.target.textContent !== card.definition) {
+//     e.target.className = 'wrong';
+//     if (counter  === data.length) {
+//         set_score(score)
+//         return history.push(`/score/${id}`)
+//     }
+// }

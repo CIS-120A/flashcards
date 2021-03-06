@@ -15,7 +15,7 @@ export default function AppRouting() {
             <Route exact path='/flashcards/:id' component={FlashCards} />
             <Route exact path='/score/:id' component={Score} />
             <Route exact path='/high_score/:id' component={HighScores} />
-            <Route exact path='/learning' component={Terms} />
+            <Route exact path='/terms/:id' component={Terms} />
             <Route exact path={'/game/:id'} component={Game} />
         </div>
     )

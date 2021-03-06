@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {set_score} from "../Redux/Actions";
 import {connect} from "react-redux";
 
-function Terms ({data}) {
+function Terms ({ data }) {
 
     const [flipped, setFlipped] = useState(false);
     const [terms, setTerms] = useState(data)
@@ -36,7 +36,7 @@ function Terms ({data}) {
 
 function mapStateToProps(state) {
     return {
-        data: state.terms
+        data: state.card_list
     }
 }
 
