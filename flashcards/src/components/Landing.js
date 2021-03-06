@@ -1,23 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {get_chapter, sortChapters} from "../Redux/Actions";
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
 import FlashCards from '../components/FlashCards'
 
-const Landing = ({ sortChapters, data, history, get_chapter }) => {
+const Landing = ({ sortChapters, history, get_chapter }) => {
+
+    const [data, setData] = useState({
+        chapter: null,
+        option: ""
+    })
     useEffect(() => {
         sortChapters();
     },[sortChapters]);
 
     let chapter = null
 
+    const click_chapter = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: Number(e.target.value)
+        })
+    }
+
+    const click_option = (e) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+        submitHandler(e)
+    }
+
     const submitHandler = (e) => {
         e.preventDefault();
-        chapter = e.target.value
-        console.log(chapter)
-        get_chapter(chapter)
+        get_chapter(data.chapter || 1);
         setTimeout(() => {
-            history.push(`/game/${chapter}`)
+            history.push(`/${e.target.name}/${data.chapter || 1}`)
         },200)
     }
 
@@ -26,7 +44,7 @@ const Landing = ({ sortChapters, data, history, get_chapter }) => {
             <h1>CIS100-A FlashCard Game</h1>
             <label className='select_label' htmlFor="flashcard">Choose a Chapter:</label>
 
-            <select className='select' onChange={submitHandler} name="flashcard" id="chapter-select">
+            <select className='select' onChange={click_chapter} name="chapter" id="chapter-select">
                 <option value="">--Please choose an option--</option>
                 <option value={1}>Chapter One</option>
                 <option value={2}>Chapter Two</option>
@@ -35,8 +53,25 @@ const Landing = ({ sortChapters, data, history, get_chapter }) => {
                 <option value={5}>Chapter Five</option>
             </select>
 
-            <Link className='landing_btn' to='/flashcards'>Study All Chapters</Link>
-            <Link className='landing_btn' to='/learning'>All Terms</Link>
+            <button onClick={click_option}
+                    className='landing_btn'
+                    name='flashcards'
+                    value='flashcards'>
+                Study
+            </button>
+            <button onClick={click_option}
+                    className='landing_btn'
+                    name='game'
+                    value='game'>
+                Test your Knowledge
+            </button>
+            <button onClick={click_option}
+                    className='landing_btn'
+                    name='terms'
+                    value='terms'>
+                All Terms
+            </button>
+
         </div>
     )
 }

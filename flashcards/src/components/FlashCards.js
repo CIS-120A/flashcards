@@ -17,88 +17,32 @@ const FlashCard_Study = ({data, history, match, set_score }) => {
         list: []
     })
 
-
-    const start_game = () => {
-
-            if (term + 3 >= data.length) {
-                setTerm(0)
-            }
-
-            setCard({
-                term: data[counter].term,
-                definition: data[counter].definition,
-                list: [
-                    data[counter].definition,
-                    data[Math.floor(Math.random() * Math.floor(data.length))].definition,
-                    data[Math.floor(Math.random() * Math.floor(data.length))].definition,
-                    data[Math.floor(Math.random() * Math.floor(data.length))].definition
-                ]
-            })
-            setTerm(term + 1);
-            setCounter(counter + 1);
-    };
-
     const clickHandler = (e) => {
-        e.preventDefault()
-        start_game()
-        setStart(!start)
+        e.preventDefault();
+        setCounter(counter + 1);
+        if (counter === flashCards.length - 1) {
+            setCounter(0)
+        }
     };
 
-    const user_select = (e) => {
+    const click_flip = (e) => {
+        e.preventDefault();
+        setFlipped(!flipped)
+    };
 
-        if (e.target.textContent === card.definition) {
-            e.target.className = 'right'
-            setScore(score + 1);
-            if (counter  === data.length) {
-                set_score(score)
-                return history.push(`/score/${id}`)
-            }
-        } else if (e.target.textContent !== card.definition) {
-            e.target.className = 'wrong';
-            if (counter  === data.length) {
-                set_score(score)
-                return history.push(`/score/${id}`)
-            }
-        }
-        console.log(score)
-        setTimeout(() => {
-            e.target.className = "";
-            start_game()
-        },10)
-
-    }
+    const click_random = (e) => {
+      e.preventDefault();
+      setCounter(Math.floor(Math.random() * Math.floor(flashCards.length)));
+    };
 
     if (!flashCards) {
         return <h1>Loading...</h1>
-    } else if (start) {
-        return (
-            <div className='start_container'>
-                <p>stuff and things</p>
-                <p>stuff and things</p>
-                <p>stuff and things</p>
-                <p>stuff and things</p>
-                <button className='start_btn' onClick={clickHandler}>Start</button>
-            </div>
-        )
     } else {
-        card.list.sort()
         return (
             <div>
-                {/*<h1>{flipped ? flashCards[term].definition : flashCards[term].term}</h1>*/}
-                <h1>{card.term}</h1>
-                    {card.list.map((arr, index) => {
-
-                        return (
-                            <div
-                               id={index}
-                               className='options_select'
-                               onClick={user_select}>
-                               <p>{arr}</p>
-                            </div>
-                        )
-                    })}
-                <p className='score'>current score</p>
-                <p className='score'>{score}</p>
+                <h1 onClick={click_flip}>{flipped ? flashCards[counter].definition : flashCards[counter].term}</h1>
+                <button onClick={clickHandler}>Next</button>
+                <button onClick={click_random}>Random</button>
             </div>
         )
     }
