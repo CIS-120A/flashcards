@@ -1,4 +1,3 @@
-import './App.css';
 import AppRouting from './routing/AppRouting';
 import { withRouter } from "react-router";
 import React from 'react';

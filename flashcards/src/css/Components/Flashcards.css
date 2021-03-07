@@ -1,0 +1,28 @@
+.fc_container {
+  background-image: url("../imgs/fc-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-y: -5px;
+  background-position-x: -5px;
+  color: #fff7e6;
+  background-size: contain;
+  height: 200vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcards {
+  display: flex;
+  flex-direction: column;
+}
+.flashcards h1 {
+  color: black;
+  margin-top: -11rem;
+  margin-right: 8rem;
+  width: 10rem;
+  margin-bottom: 6rem;
+}
+
+/*# sourceMappingURL=Flashcards.css.map */

@@ -1,0 +1,78 @@
+@import "Variables";
+
+.landing_container {
+  padding-top: 15rem;
+  display: flex;
+  flex-direction: column;
+
+  background-image: url("../imgs/landing-bg2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: -120px;
+  background-position-y: 80px;
+  height: 740px;
+
+  h1 {
+    width: 23rem;
+    align-self: flex-end;
+    text-align: center;
+    color: $landing_accent;
+    font-size: 1.8rem;
+    margin-top: -17rem;
+    line-height: 1.5;
+    font-family: $title_font;
+  }
+
+  label {
+    margin-top: 10rem;
+    font-weight: bold;
+    align-self: flex-end;
+    justify-content: center;
+    color: $landing_accent;
+  }
+
+  select {
+    margin-top: .5rem;
+    margin-bottom: 6rem;
+    border-radius: 5px;
+    background-color: $landing_accent;
+    width: 9rem;
+    align-self: flex-end;
+    justify-content: center;
+  }
+
+  button {
+    background-color: $landing_accent;
+    border-radius: 10px;
+    padding: .5rem;
+    width: 9rem;
+    align-self: flex-end;
+    justify-content: center;
+    margin: 5px;
+
+  }
+}
+
+.landing_btn_container {
+  display: flex;
+  align-content: space-evenly;
+  margin-top: .5rem;
+}
+
+.hide {
+  display: none;
+}
+
+.chapter_select {
+  margin: 0 auto;
+
+  button {
+    border-radius: 5px;
+    padding: .5rem;
+  }
+}
+
+.select {
+  width: 20rem;
+  padding: .5rem;
+}

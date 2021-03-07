@@ -6,70 +6,83 @@ import FlashCards from '../components/FlashCards'
 
 const Landing = ({ sortChapters, history, get_chapter }) => {
 
+    const [edit, setEdit] = useState(false);
     const [data, setData] = useState({
-        chapter: null,
-        option: ""
+        chapter: 1,
+        option: "flashcards"
     })
     useEffect(() => {
         sortChapters();
     },[sortChapters]);
 
     const click_chapter = (e) => {
+        e.preventDefault();
         setData({
             ...data,
-            [e.target.name]: Number(e.target.value)
+            chapter: Number(e.target.value)
         })
     }
 
     const click_option = (e) => {
         setData({
             ...data,
-            [e.target.name]: e.target.value
+            option: e.target.value
         })
-        submitHandler(e)
+        setEdit(!edit)
     }
 
-    const submitHandler = (e) => {
+    const click_chapter_back = (e) => {
         e.preventDefault();
+        setEdit(!edit)
+    }
+
+    const submitHandler = () => {
         get_chapter(data.chapter || 1);
         setTimeout(() => {
-            history.push(`/${e.target.name}/${data.chapter || 1}`)
+            history.push(`/${data.option}/${data.chapter || 1}`)
         },200)
     }
 
     return (
         <div className='landing_container'>
-            <h1>CIS100-A FlashCard Game</h1>
-            <label className='select_label' htmlFor="flashcard">Choose a Chapter:</label>
+            <h1>CIS100-A Terminology Portal</h1>
 
-            <select className='select' onChange={click_chapter} name="chapter" id="chapter-select">
-                <option value="">--Please choose an option--</option>
-                <option value={1}>Chapter One</option>
-                <option value={2}>Chapter Two</option>
-                <option value={3}>Chapter Three</option>
-                <option value={4}>Chapter Four</option>
-                <option value={5}>Chapter Five</option>
-            </select>
-
+            <div className={edit ? 'hide':'landing_btn_container'}>
             <button onClick={click_option}
                     className='landing_btn'
-                    name='flashcards'
+                    name='option'
                     value='flashcards'>
-                Study
+                Flashcards
             </button>
             <button onClick={click_option}
                     className='landing_btn'
-                    name='game'
+                    name='option'
                     value='game'>
-                Test your Knowledge
+                Game
             </button>
             <button onClick={click_option}
                     className='landing_btn'
-                    name='terms'
+                    name='option'
                     value='terms'>
-                All Terms
+                Terms
             </button>
+                </div>
+            { edit && (
+                <div className='chapter_select'>
+                    {/*<label className='select_label' htmlFor="chapter">Choose a Chapter:</label>*/}
+                    <select className='select' onChange={click_chapter} name="chapter" id="chapter">
+                        <option value="">Chapter Select...</option>
+                        <option name='chapter' value={1}>Chapter One</option>
+                        <option name='chapter' value={2}>Chapter Two</option>
+                        <option name='chapter' value={3}>Chapter Three</option>
+                        <option name='chapter' value={4}>Chapter Four</option>
+                        <option name='chapter' value={5}>Chapter Five</option>
+                    </select>
 
+                    <button onClick={click_chapter_back} className='landing_btn'>Back</button>
+                    <button onClick={submitHandler} className='landing_btn'>Submit</button>
+                </div>
+            )}
         </div>
     )
 }
