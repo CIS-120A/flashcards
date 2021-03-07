@@ -1,0 +1,71 @@
+.landing_container {
+  padding-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  background-image: url("../imgs/landing-bg2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position-x: -120px;
+  background-position-y: 80px;
+  height: 740px;
+}
+.landing_container h1 {
+  width: 23rem;
+  align-self: flex-end;
+  text-align: center;
+  color: #fff7e6;
+  font-size: 1.8rem;
+  margin-top: -17rem;
+  line-height: 1.5;
+  font-family: "Righteous", cursive;
+}
+.landing_container label {
+  margin-top: 10rem;
+  font-weight: bold;
+  align-self: flex-end;
+  justify-content: center;
+  color: #fff7e6;
+}
+.landing_container select {
+  margin-top: 0.5rem;
+  margin-bottom: 6rem;
+  border-radius: 5px;
+  background-color: #fff7e6;
+  width: 9rem;
+  align-self: flex-end;
+  justify-content: center;
+}
+.landing_container button {
+  background-color: #fff7e6;
+  border-radius: 10px;
+  padding: 0.5rem;
+  width: 9rem;
+  align-self: flex-end;
+  justify-content: center;
+  margin: 5px;
+}
+
+.landing_btn_container {
+  display: flex;
+  align-content: space-evenly;
+  margin-top: 0.5rem;
+}
+
+.hide {
+  display: none;
+}
+
+.chapter_select {
+  margin: 0 auto;
+}
+.chapter_select button {
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.select {
+  width: 20rem;
+  padding: 0.5rem;
+}
+
+/*# sourceMappingURL=Landing.css.map */

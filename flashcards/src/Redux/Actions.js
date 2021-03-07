@@ -7,12 +7,10 @@ export const POST_SCORE = "POST_SCORE";
 export const GET_SCORE = "GET_SCORE";
 
 function sortChapters() {
-    console.log('axios')
     return dispatch => {
 
         axios.get('http://localhost:5000/chapter')
             .then(res => {
-                console.log(res.data)
                 dispatch({ type: SORT_CHAPTERS, payload: {
                     data: res.data
                     }})

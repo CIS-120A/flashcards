@@ -31,10 +31,12 @@ const FlashCard_Study = ({ data, history, match }) => {
         return <h1>Loading...</h1>
     } else {
         return (
-            <div>
+            <div className='fc_container'>
+                <div className='flashcards'>
                 <h1 onClick={click_flip}>{flipped ? flashCards[counter].definition : flashCards[counter].term}</h1>
                 <button onClick={clickHandler}>Next</button>
                 <button onClick={click_random}>Random</button>
+                </div>
             </div>
         )
     }
