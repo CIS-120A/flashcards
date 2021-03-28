@@ -1,13 +1,7 @@
 .landing_container {
-  padding-top: 15rem;
   display: flex;
   flex-direction: column;
-  background-image: url("../imgs/landing-bg2.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-x: -120px;
-  background-position-y: 80px;
-  height: 740px;
+  padding-top: 1.5rem;
 }
 .landing_container h1 {
   width: 23rem;
@@ -15,12 +9,10 @@
   text-align: center;
   color: #fff7e6;
   font-size: 1.8rem;
-  margin-top: -17rem;
   line-height: 1.5;
   font-family: "Righteous", cursive;
 }
 .landing_container label {
-  margin-top: 10rem;
   font-weight: bold;
   align-self: flex-end;
   justify-content: center;
@@ -28,21 +20,26 @@
 }
 .landing_container select {
   margin-top: 0.5rem;
-  margin-bottom: 6rem;
   border-radius: 5px;
-  background-color: #fff7e6;
-  width: 9rem;
-  align-self: flex-end;
-  justify-content: center;
+  background-color: rgba(255, 247, 230, 0.8);
+  width: 22rem;
+  display: flex;
+  border: 2px solid black;
 }
 .landing_container button {
-  background-color: #fff7e6;
+  background-color: rgba(255, 247, 230, 0.4);
+  border: 2px solid black;
+  color: #fff7e6;
   border-radius: 10px;
   padding: 0.5rem;
-  width: 9rem;
-  align-self: flex-end;
-  justify-content: center;
-  margin: 5px;
+  width: 7rem;
+  margin: 0 auto;
+  transition: ease-in-out;
+}
+.landing_container img {
+  border-radius: 5rem;
+  margin: 3rem 0.5rem;
+  border: 2px solid #fff7e6;
 }
 
 .landing_btn_container {
@@ -58,9 +55,10 @@
 .chapter_select {
   margin: 0 auto;
 }
-.chapter_select button {
-  border-radius: 5px;
-  padding: 0.5rem;
+.chapter_select .select_btn_container {
+  display: flex;
+  margin: 1rem;
+  order: 0;
 }
 
 .select {

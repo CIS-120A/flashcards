@@ -8,9 +8,11 @@ const FlashCard_Study = ({ data, history, match }) => {
     const [flipped, setFlipped] = useState(false);
     const [flashCards, setFlashCards] = useState(data);
     const [counter, setCounter] = useState(0);
+    const id = match.params.id;
 
     const clickHandler = (e) => {
         e.preventDefault();
+        setFlipped(false)
         setCounter(counter + 1);
         if (counter === flashCards.length - 1) {
             setCounter(0)
@@ -24,8 +26,14 @@ const FlashCard_Study = ({ data, history, match }) => {
 
     const click_random = (e) => {
       e.preventDefault();
+      setFlipped(false)
       setCounter(Math.floor(Math.random() * Math.floor(flashCards.length)));
     };
+
+    const click_home = (e) => {
+        e.preventDefault();
+        history.push('/')
+    }
 
     if (!flashCards) {
         return <h1>Loading...</h1>
@@ -33,9 +41,20 @@ const FlashCard_Study = ({ data, history, match }) => {
         return (
             <div className='fc_container'>
                 <div className='flashcards'>
+                    <button className='home_btn fc_home' onClick={click_home}><ion-icon name="home-outline"></ion-icon></button>
+                    <div className='fc_btn_container'>
+                    <button onClick={clickHandler}>Next</button>
+                    <button onClick={click_random}>Random</button>
+                    </div>
                 <h1 onClick={click_flip}>{flipped ? flashCards[counter].definition : flashCards[counter].term}</h1>
-                <button onClick={clickHandler}>Next</button>
-                <button onClick={click_random}>Random</button>
+                </div>
+
+                <div className='fc_instructions'>
+                    <h1>Chapter {id} FlashCards</h1>
+                    <h4>To "flip" the card simply tap on the term</h4>
+                    <h4>Next will go through the terms alphabetically</h4>
+                    <h4>Random will select a random term</h4>
+                    <h4>Enjoy</h4>
                 </div>
             </div>
         )

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {get_chapter, sortChapters} from "../Redux/Actions";
+import landing_photo from '../imgs/unnamed.jpg'
 import { Redirect } from 'react-router';
 import FlashCards from '../components/FlashCards'
 
@@ -67,6 +68,7 @@ const Landing = ({ sortChapters, history, get_chapter }) => {
                 Terms
             </button>
                 </div>
+            <img className='landing_photo' src={landing_photo} alt='landing_photo' />
             { edit && (
                 <div className='chapter_select'>
                     {/*<label className='select_label' htmlFor="chapter">Choose a Chapter:</label>*/}
@@ -77,10 +79,15 @@ const Landing = ({ sortChapters, history, get_chapter }) => {
                         <option name='chapter' value={3}>Chapter Three</option>
                         <option name='chapter' value={4}>Chapter Four</option>
                         <option name='chapter' value={5}>Chapter Five</option>
+                        <option name='chapter' value={6}>Chapter Six</option>
+                        <option name='chapter' value={7}>Chapter Seven</option>
+                        <option name='chapter' value={13}>Chapter Thirteen</option>
                     </select>
 
-                    <button onClick={click_chapter_back} className='landing_btn'>Back</button>
-                    <button onClick={submitHandler} className='landing_btn'>Submit</button>
+                    <div className='select_btn_container'>
+                        <button onClick={submitHandler} className='landing_btn_2'>Submit</button>
+                        <button onClick={click_chapter_back} className='landing_btn_2'>Back</button>
+                    </div>
                 </div>
             )}
         </div>
