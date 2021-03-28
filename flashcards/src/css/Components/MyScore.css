@@ -1,0 +1,24 @@
+.score_container {
+  color: #fff7e6;
+  text-align: center;
+  margin-top: 12rem;
+  font-weight: bold;
+  font-size: 3rem;
+}
+.score_container p {
+  padding: 1rem;
+}
+.score_container input {
+  margin: 1rem 5rem;
+}
+.score_container input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+.score_container button {
+  background-color: #fff7e6;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+/*# sourceMappingURL=MyScore.css.map */

@@ -37,10 +37,14 @@ function Scores({ match, post_score, history, get_score }) {
         )
     } else
     return (
-        <div>
-            <p>Your final score is....</p>
+        <div className='score_container'>
+            <p>{user.score > 20 ? "Great Job":"Better Luck next Time"}</p>
             <h1>{user.score}</h1>
-            <input type='text' name='name' placeholder='Enter Name' value={user.name} onChange={changeHandler} />
+            <input type='text'
+                   name='name'
+                   placeholder='Enter Name'
+                   value={user.name}
+                   onChange={changeHandler} />
             <button onClick={submitHandler}>Submit Score</button>
         </div>
     )

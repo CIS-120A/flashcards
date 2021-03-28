@@ -1,0 +1,23 @@
+@import "Variables";
+
+.hs_container {
+  color: $landing_accent;
+
+  h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0 3rem;
+  }
+
+  .score_holder {
+    display: flex;
+    margin: 1rem 5rem;
+    justify-content: space-between;
+    font-size: large;
+
+    .high_score {
+      align-content: flex-end;
+    }
+  }
+}

@@ -13,6 +13,7 @@ function Game({ data, history, match }) {
 
         if (counter === data.length - 1) {
             if (e.target.textContent === data[counter].definition) {
+                e.target.className = 'right'
                 setScore(score + 1)
                 setCounter(0)
             }
@@ -25,16 +26,27 @@ function Game({ data, history, match }) {
 
         if (counter < data.length - 1) {
             if (e.target.textContent === data[counter].definition) {
+                console.log(e.target)
+                e.target.textContent = "Correct"
+                e.target.style = 'background-color: #5cb85c'
                 setScore(score + 1);
-                setCounter(counter + 1)
+                setTimeout(() => {
+                    setCounter(counter + 1);
+                    e.target.style = ''
+                },1500)
             } else {
-                setCounter(counter + 1)
+                e.target.textContent = "Wrong"
+                e.target.style = 'background-color: #d9534f'
+                setTimeout(() => {
+                    setCounter(counter + 1);
+                    e.target.style = ''
+                },1000)
             }
         }
     }
 
     return (
-        <div>
+        <div className='game_container'>
             <h1>{data[counter].term}</h1>
             {data[counter].list.map((arr) => {
 
@@ -44,7 +56,7 @@ function Game({ data, history, match }) {
                     </div>
                 )
             })}
-
+            <h2>Score</h2>
             <h3>{score}</h3>
     </div>
     )

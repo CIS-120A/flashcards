@@ -1,0 +1,47 @@
+.home_btn {
+  font-size: xx-large;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff7e6;
+  font-weight: bold;
+  border: none;
+  display: flex;
+  margin: -2rem 0 1rem 0.5rem;
+}
+
+.filter_btn {
+  background-color: rgba(255, 247, 230, 0.4);
+  border: 2px solid black;
+  color: #fff7e6;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: medium;
+  letter-spacing: 0.1rem;
+  alignment: center;
+  width: 95%;
+}
+
+.term_input {
+  display: flex;
+  width: 90%;
+  margin: 0.5rem auto;
+  border-radius: 1rem;
+  padding: 0.3rem;
+}
+
+.term_container {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff7e6;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 1rem;
+  line-height: 1.5;
+}
+.term_container h3 {
+  margin-bottom: 0.5rem;
+}
+
+/*# sourceMappingURL=Terms.css.map */

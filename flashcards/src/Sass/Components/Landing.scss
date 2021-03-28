@@ -1,16 +1,9 @@
 @import "Variables";
 
 .landing_container {
-  padding-top: 15rem;
   display: flex;
   flex-direction: column;
-
-  background-image: url("../imgs/landing-bg2.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-x: -120px;
-  background-position-y: 80px;
-  height: 740px;
+  padding-top: 1.5rem;
 
   h1 {
     width: 23rem;
@@ -18,13 +11,11 @@
     text-align: center;
     color: $landing_accent;
     font-size: 1.8rem;
-    margin-top: -17rem;
     line-height: 1.5;
     font-family: $title_font;
   }
 
   label {
-    margin-top: 10rem;
     font-weight: bold;
     align-self: flex-end;
     justify-content: center;
@@ -33,23 +24,28 @@
 
   select {
     margin-top: .5rem;
-    margin-bottom: 6rem;
     border-radius: 5px;
-    background-color: $landing_accent;
-    width: 9rem;
-    align-self: flex-end;
-    justify-content: center;
+    background-color: rgba(255,247,230,.8);
+    width: 22rem;
+    display: flex;
+    border: 2px solid black;
   }
 
   button {
-    background-color: $landing_accent;
+    background-color: rgba(255,247,230,.4);
+    border: 2px solid black;
+    color: $landing_accent;
     border-radius: 10px;
     padding: .5rem;
-    width: 9rem;
-    align-self: flex-end;
-    justify-content: center;
-    margin: 5px;
+    width: 7rem;
+    margin: 0 auto;
+    transition: ease-in-out;
+  }
 
+  img {
+    border-radius: 5rem;
+    margin: 3rem .5rem;
+    border: 2px solid $landing_accent;
   }
 }
 
@@ -66,9 +62,10 @@
 .chapter_select {
   margin: 0 auto;
 
-  button {
-    border-radius: 5px;
-    padding: .5rem;
+  .select_btn_container {
+    display: flex;
+    margin: 1rem;
+    order: 0;
   }
 }
 
@@ -76,3 +73,4 @@
   width: 20rem;
   padding: .5rem;
 }
+

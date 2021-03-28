@@ -1,0 +1,28 @@
+@import "Variables";
+
+.score_container {
+  color: $landing_accent;
+  text-align: center;
+  margin-top: 12rem;
+  font-weight: bold;
+  font-size: 3rem;
+
+
+  p {
+    padding: 1rem;
+  }
+  input {
+    margin: 1rem 5rem;
+  }
+
+  input {
+    padding: .5rem;
+    border-radius: .5rem;
+  }
+
+  button {
+    background-color: $landing_accent;
+    padding: .5rem;
+    border-radius: .5rem;
+  }
+}

@@ -7,13 +7,13 @@ function HighScores ({ data, match }) {
     const [scores, setScores] = useState(data);
 
         return (
-            <div>
+            <div className='hs_container'>
                 <h1>Chapter {id} High Scores</h1>
                 {scores.map(arr => {
                     return (
-                        <div>
+                        <div className='score_holder'>
                             <p>{arr.name}</p>
-                            <p>{arr.score}</p>
+                            <p className='high_score'>{arr.score}</p>
                         </div>
                     )
                 })}

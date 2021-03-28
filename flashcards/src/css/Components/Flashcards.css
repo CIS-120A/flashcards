@@ -1,28 +1,48 @@
 .fc_container {
-  background-image: url("../imgs/fc-bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-position-y: -5px;
-  background-position-x: -5px;
-  color: #fff7e6;
-  background-size: contain;
-  height: 200vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 10rem;
 }
 
 .flashcards {
   display: flex;
   flex-direction: column;
+  margin-top: 15rem;
+  height: 15rem;
 }
 .flashcards h1 {
-  color: black;
-  margin-top: -11rem;
-  margin-right: 8rem;
-  width: 10rem;
-  margin-bottom: 6rem;
+  color: #fff7e6;
+  text-align: center;
+  margin-top: 5rem;
+  padding: 0 1rem;
+  font-weight: normal;
+}
+.flashcards .fc_btn_container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 3rem;
+}
+.flashcards .fc_btn_container button {
+  background-color: rgba(255, 247, 230, 0.4);
+  border: 2px solid black;
+  color: #fff7e6;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 8rem;
+}
+.flashcards .fc_home {
+  margin-top: -12rem;
+  width: 3rem;
+}
+
+.fc_instructions {
+  color: #fff7e6;
+  text-align: center;
+  font-size: x-large;
+}
+.fc_instructions h4 {
+  font-size: medium;
+  margin-top: 1rem;
+  font-weight: normal;
 }
 
 /*# sourceMappingURL=Flashcards.css.map */

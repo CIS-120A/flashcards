@@ -1,7 +1,7 @@
 import React, { useState  } from 'react';
 import { connect } from "react-redux";
 
-function Terms ({ data }) {
+function Terms ({ data, history }) {
 
     const [filter, setFilter] = useState(false);
     const [input, setInput] = useState("");
@@ -17,6 +17,11 @@ function Terms ({ data }) {
         setInput(e.target.value)
     };
 
+    const click_home = (e) => {
+        e.preventDefault();
+        history.push('/')
+    }
+
     const filter_terms = (arr, query) => {
         return arr.filter(el => el.term.substr(0,1).toLocaleLowerCase().indexOf(query.toLowerCase()) !== -1)
     }
@@ -28,14 +33,15 @@ function Terms ({ data }) {
     } else
     return (
         <div className='learning_container'>
-            <button onClick={filter_list}>Filter</button>
+            <button className='home_btn' onClick={click_home}><ion-icon name="home-outline"></ion-icon></button>
+            <button className='filter_btn' onClick={filter_list}>Filter</button>
             {filter && (
                 <div>
-                    <input type='text' name='filter' onChange={change_handler} />
+                    <input className='term_input' type='text' name='filter' onChange={change_handler} />
 
                     {filtered_terms.map(arr => {
                         return (
-                            <div key={Math.random()}>
+                            <div className='term_container' key={Math.random()}>
                                 <h3 className='term'>{arr.term}</h3>
                                 <p>{arr.definition}</p>
                             </div>
@@ -45,7 +51,7 @@ function Terms ({ data }) {
             )}
             {terms.map(arr => {
                 return (
-                    <div key={Math.random()}>
+                    <div className='term_container' key={Math.random()}>
                         <h3 className='term'>{arr.term}</h3>
                         <p>{arr.definition}</p>
                     </div>
