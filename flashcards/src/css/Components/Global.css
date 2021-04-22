@@ -10,5 +10,8 @@ html {
 .App {
   margin-top: 3.8rem;
 }
+.App .capitalize {
+  text-transform: capitalize;
+}
 
 /*# sourceMappingURL=Global.css.map */

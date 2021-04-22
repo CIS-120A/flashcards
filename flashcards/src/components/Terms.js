@@ -23,12 +23,13 @@ function Terms ({ data, history }) {
     }
 
     const filter_terms = (arr, query) => {
-        return arr.filter(el => el.term.substr(0,1).toLocaleLowerCase().indexOf(query.toLowerCase()) !== -1)
+        return arr.filter(el => el.term.substr(0,3).toLocaleLowerCase().indexOf(query.toLowerCase()) !== -1)
     }
 
     let filtered_terms = filter_terms(terms, input)
 
     if (!data) {
+
         return <h1>Loading....</h1>
     } else
     return (
@@ -42,7 +43,7 @@ function Terms ({ data, history }) {
                     {filtered_terms.map(arr => {
                         return (
                             <div className='term_container' key={Math.random()}>
-                                <h3 className='term'>{arr.term}</h3>
+                                <h3 className='capitalize'>{arr.term}</h3>
                                 <p>{arr.definition}</p>
                             </div>
                         )
@@ -52,7 +53,7 @@ function Terms ({ data, history }) {
             {terms.map(arr => {
                 return (
                     <div className='term_container' key={Math.random()}>
-                        <h3 className='term'>{arr.term}</h3>
+                        <h3 className='capitalize'>{arr.term}</h3>
                         <p>{arr.definition}</p>
                     </div>
                 )
