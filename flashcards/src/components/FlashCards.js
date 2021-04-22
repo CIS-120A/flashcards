@@ -19,13 +19,62 @@ const FlashCard_Study = ({ data, history, match }) => {
         }
     };
 
+    const click_handler = (e) => {
+        e.preventDefault()
+        if (e.target.textContent === "Random") {
+            if (flipped) {
+                setFlipped(!flipped)
+                e.target.className = "capitalize"
+                setCounter(Math.floor(Math.random() * Math.floor(flashCards.length)));
+            } else {
+                e.target.className = "capitalize"
+                setCounter(Math.floor(Math.random() * Math.floor(flashCards.length)));
+            }
+        } else if (e.target.textContent === "Next") {
+            if (flipped) {
+                setFlipped(!flipped)
+                e.target.className = "capitalize"
+
+                setCounter(counter + 1);
+                if (counter === flashCards.length - 1) {
+                    setCounter(0)
+                }
+            } else {
+                setCounter(counter + 1);
+                if (counter === flashCards.length - 1) {
+                    setCounter(0)
+                }
+            }
+        } else {
+            if (!flipped) {
+                setFlipped(!flipped)
+                e.target.className = ""
+            } else {
+                setFlipped(!flipped)
+                e.target.className = "capitalize"
+            }
+        }
+    }
+
     const click_flip = (e) => {
         e.preventDefault();
-        setFlipped(!flipped)
+
+        if (e.target.className === "capitalize") {
+            e.target.className = "";
+        } else {
+            e.target.className = "capitalize";
+        }
+        setFlipped(!flipped);
     };
 
     const click_random = (e) => {
       e.preventDefault();
+      console.log(e.target)
+      if (e.target.className === "capitalize") {
+            e.target.className = "";
+        } else {
+            e.target.className = "capitalize";
+        }
       setFlipped(false)
       setCounter(Math.floor(Math.random() * Math.floor(flashCards.length)));
     };
@@ -43,10 +92,10 @@ const FlashCard_Study = ({ data, history, match }) => {
                 <div className='flashcards'>
                     <button className='home_btn fc_home' onClick={click_home}><ion-icon name="home-outline"></ion-icon></button>
                     <div className='fc_btn_container'>
-                    <button onClick={clickHandler}>Next</button>
-                    <button onClick={click_random}>Random</button>
+                    <button onClick={click_handler}>Next</button>
+                    <button onClick={click_handler}>Random</button>
                     </div>
-                <h1 onClick={click_flip}>{flipped ? flashCards[counter].definition : flashCards[counter].term}</h1>
+                <h1 className="capitalize" onClick={click_handler}>{flipped ? flashCards[counter].definition : flashCards[counter].term}</h1>
                 </div>
 
                 <div className='fc_instructions'>

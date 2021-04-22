@@ -45,9 +45,15 @@ function Game({ data, history, match }) {
         }
     }
 
+    const click_home = (e) => {
+        e.preventDefault();
+        history.push('/')
+    }
+
     return (
         <div className='game_container'>
-            <h1>{data[counter].term}</h1>
+            <button className='home_btn' onClick={click_home}><ion-icon name="home-outline"></ion-icon></button>
+            <h1 className="capitalize">{data[counter].term}</h1>
             {data[counter].list.map((arr) => {
 
                 return (

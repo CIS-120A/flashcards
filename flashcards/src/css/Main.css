@@ -62,13 +62,15 @@ html {
 .App {
   margin-top: 3.8rem;
 }
+.App .capitalize {
+  text-transform: capitalize;
+}
 
 .landing_container {
   display: flex;
   flex-direction: column;
   padding-top: 1.5rem;
 }
-
 .landing_container h1 {
   width: 23rem;
   align-self: flex-end;
@@ -78,14 +80,12 @@ html {
   line-height: 1.5;
   font-family: "Righteous", cursive;
 }
-
 .landing_container label {
   font-weight: bold;
   align-self: flex-end;
   justify-content: center;
   color: #fff7e6;
 }
-
 .landing_container select {
   margin-top: 0.5rem;
   border-radius: 5px;
@@ -94,7 +94,6 @@ html {
   display: flex;
   border: 2px solid black;
 }
-
 .landing_container button {
   background-color: rgba(255, 247, 230, 0.4);
   border: 2px solid black;
@@ -105,7 +104,6 @@ html {
   margin: 0 auto;
   transition: ease-in-out;
 }
-
 .landing_container img {
   border-radius: 5rem;
   margin: 3rem 0.5rem;
@@ -125,7 +123,6 @@ html {
 .chapter_select {
   margin: 0 auto;
 }
-
 .chapter_select .select_btn_container {
   display: flex;
   margin: 1rem;
@@ -148,7 +145,6 @@ html {
   margin-top: 15rem;
   height: 15rem;
 }
-
 .flashcards h1 {
   color: #fff7e6;
   text-align: center;
@@ -156,13 +152,11 @@ html {
   padding: 0 1rem;
   font-weight: normal;
 }
-
 .flashcards .fc_btn_container {
   display: flex;
   justify-content: space-evenly;
   margin-top: 3rem;
 }
-
 .flashcards .fc_btn_container button {
   background-color: rgba(255, 247, 230, 0.4);
   border: 2px solid black;
@@ -171,7 +165,6 @@ html {
   padding: 0.5rem;
   width: 8rem;
 }
-
 .flashcards .fc_home {
   margin-top: -12rem;
   width: 3rem;
@@ -182,7 +175,6 @@ html {
   text-align: center;
   font-size: x-large;
 }
-
 .fc_instructions h4 {
   font-size: medium;
   margin-top: 1rem;
@@ -231,7 +223,6 @@ html {
   margin: 1rem;
   line-height: 1.5;
 }
-
 .term_container h3 {
   margin-bottom: 0.5rem;
 }
@@ -239,14 +230,12 @@ html {
 .game_container {
   color: #fff7e6;
 }
-
 .game_container h1 {
   text-align: center;
   font-size: xx-large;
   margin-top: 5rem;
   margin-bottom: 3rem;
 }
-
 .game_container p {
   background-color: rgba(0, 0, 0, 0.5);
   margin: 0.8rem;
@@ -254,13 +243,11 @@ html {
   border-radius: 0.8rem;
   line-height: 1.3;
 }
-
 .game_container h2 {
   font-size: x-large;
   text-align: center;
   margin-top: 3rem;
 }
-
 .game_container h3 {
   font-size: x-large;
   text-align: center;
@@ -281,20 +268,16 @@ html {
   font-weight: bold;
   font-size: 3rem;
 }
-
 .score_container p {
   padding: 1rem;
 }
-
 .score_container input {
   margin: 1rem 5rem;
 }
-
 .score_container input {
   padding: 0.5rem;
   border-radius: 0.5rem;
 }
-
 .score_container button {
   background-color: #fff7e6;
   padding: 0.5rem;
@@ -304,25 +287,20 @@ html {
 .hs_container {
   color: #fff7e6;
 }
-
 .hs_container h1 {
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
   padding: 0 3rem;
 }
-
 .hs_container .score_holder {
   display: flex;
   margin: 1rem 5rem;
   justify-content: space-between;
   font-size: large;
 }
-
 .hs_container .score_holder .high_score {
   align-content: flex-end;
 }
-
-/*# sourceMappingURL=Main.css.map */
 
 /*# sourceMappingURL=Main.css.map */
