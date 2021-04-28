@@ -81,7 +81,13 @@ const Landing = ({ sortChapters, history, get_chapter }) => {
                         <option name='chapter' value={5}>Chapter Five</option>
                         <option name='chapter' value={6}>Chapter Six</option>
                         <option name='chapter' value={7}>Chapter Seven</option>
+                        <option name='chapter' value={8}>Chapter Eight</option>
+                        <option name='chapter' value={9}>Chapter Nine</option>
+                        <option name='chapter' value={10}>Chapter Ten</option>
+                        <option name='chapter' value={11}>Chapter Eleven</option>
+                        <option name='chapter' value={12}>Chapter Twelve</option>
                         <option name='chapter' value={13}>Chapter Thirteen</option>
+                        <option name='chapter' value={13}>Chapter Fourteen</option>
                     </select>
 
                     <div className='select_btn_container'>
