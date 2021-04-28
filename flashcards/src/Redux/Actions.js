@@ -9,7 +9,7 @@ export const GET_SCORE = "GET_SCORE";
 function sortChapters() {
     return dispatch => {
 
-        axios.get('http://localhost:5000/chapter')
+        axios.get('https://cis-term-portal.herokuapp.com/chapter')
             .then(res => {
                 dispatch({ type: SORT_CHAPTERS, payload: {
                     data: res.data
@@ -25,7 +25,7 @@ function get_chapter(id) {
     return dispatch => {
         let chapter_cards = [];
 
-        axios.get(`http://localhost:5000/chapter/${id}`)
+        axios.get(`https://cis-term-portal.herokuapp.com/chapter/${id}`)
             .then(res => {
                 res.data.map(arr => {
                     chapter_cards.push({
@@ -69,7 +69,7 @@ function set_score(num) {
 function post_score(num) {
     console.log(num)
         return dispatch => {
-            axios.post('http://localhost:5000/score', num)
+            axios.post('https://cis-term-portal.herokuapp.com//score', num)
                 .then(res => {
                     dispatch({ type: POST_SCORE, payload: {
                         data: num,
@@ -93,7 +93,7 @@ function get_score(id) {
 
     return (dispatch) => {
 
-       axios.get(`http://localhost:5000/score/${id}`)
+       axios.get(`https://cis-term-portal.herokuapp.com/score/${id}`)
             .then(res => {
                 console.log(res.data)
                 dispatch({
