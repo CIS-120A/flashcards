@@ -53,6 +53,8 @@ function Game({ data, history, match }) {
     return (
         <div className='game_container'>
             <button className='home_btn' onClick={click_home}><ion-icon name="home-outline"></ion-icon></button>
+            <h2>Score</h2>
+            <h3>{score}</h3>
             <h1 className="capitalize">{data[counter].term}</h1>
             {data[counter].list.map((arr) => {
 
@@ -62,8 +64,6 @@ function Game({ data, history, match }) {
                     </div>
                 )
             })}
-            <h2>Score</h2>
-            <h3>{score}</h3>
     </div>
     )
 
