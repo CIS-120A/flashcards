@@ -12,6 +12,7 @@ html {
 }
 .App .capitalize {
   text-transform: capitalize;
+  margin-top: 2rem;
 }
 
 /*# sourceMappingURL=Global.css.map */
