@@ -69,7 +69,7 @@ function set_score(num) {
 function post_score(num) {
     console.log(num)
         return dispatch => {
-            axios.post('https://cis-term-portal.herokuapp.com//score', num)
+            axios.post('https://cis-term-portal.herokuapp.com/score', num)
                 .then(res => {
                     dispatch({ type: POST_SCORE, payload: {
                         data: num,
